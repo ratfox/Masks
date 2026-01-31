@@ -7,7 +7,7 @@ public class EnemyPatrol : MonoBehaviour
     public List<Transform> waypoints; // Drag your 4 points here
     public float waitTime = 1f;       // How long to stay at a point
     
-    private int currentTargetIndex;
+    private int currentTargetIndex = 0;
     private bool isWaiting = false;
     private Animator anim;
 
@@ -27,8 +27,9 @@ public class EnemyPatrol : MonoBehaviour
 
     void MoveToTarget()
     {
+                Debug.Log("Bla: " +  " " + currentTargetIndex + " out of " + waypoints.Count);
         Transform target = waypoints[currentTargetIndex];
-        
+
         // Move towards the target
         transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
@@ -59,7 +60,8 @@ public class EnemyPatrol : MonoBehaviour
         {
             nextPoint = Random.Range(0, waypoints.Count);
         }
-        
+        Debug.Log("Text: " + nextPoint + " " + currentTargetIndex);
+
         currentTargetIndex = nextPoint;
         isWaiting = false;
     }
