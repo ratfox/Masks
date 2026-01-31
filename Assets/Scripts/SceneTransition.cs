@@ -14,10 +14,12 @@ public string sceneToLoad;
     {
         if (other.CompareTag("Player"))
         {
-            // Store the side we are coming from in a static variable 
-            // so the player knows where to go in the next scene.
             PlayerController.Instance.shouldSetDestination = true;
             PlayerController.Instance.lastTransitionSide = entranceSide;
-            SceneManager.LoadScene(sceneToLoad);
+            
+            // Start the fade sequence
+            StartCoroutine(SceneFader.Instance.FadeOutAndLoad(sceneToLoad));
         }
-    }}
+    }
+}
+    
