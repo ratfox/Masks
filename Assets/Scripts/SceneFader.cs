@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneFader : MonoBehaviour
 {
     public static SceneFader Instance;
+    private Canvas faderCanvas;
     public Image fadeImage;
     public float fadeSpeed = 0.5f; // ignored, set in inspector
 
@@ -14,6 +15,7 @@ public class SceneFader : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            faderCanvas = GetComponent<Canvas>();
             DontDestroyOnLoad(gameObject);
             
             // Ensure the image starts fully black so it can fade IN
@@ -62,6 +64,11 @@ public class SceneFader : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+// Find the new Main Camera in the current scene
+        if (faderCanvas != null)
+        {
+            faderCanvas.worldCamera = Camera.main;
+        }
         StartCoroutine(FadeIn());
     }
 }
