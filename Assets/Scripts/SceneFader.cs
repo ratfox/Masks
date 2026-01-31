@@ -7,7 +7,7 @@ public class SceneFader : MonoBehaviour
 {
     public static SceneFader Instance;
     public Image fadeImage;
-    public float fadeSpeed = 1.5f;
+    public float fadeSpeed = 0.5f;
 
     void Awake()
     {
