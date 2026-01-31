@@ -42,6 +42,22 @@ public class SceneFader : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void FadeOut()
+    {
+        // The Fader handles its own coroutine
+        StartCoroutine(FadeOutRoutine());
+    }
+
+    private IEnumerator FadeOutRoutine() {
+        float alpha = 0;
+        while (alpha < 1)
+        {
+            alpha += Time.unscaledDeltaTime * fadeSpeed;
+            fadeImage.color = new Color(0, 0, 0, alpha);
+            yield return null;
+        }
+    }
+
     public IEnumerator FadeIn()
     {
         float alpha = 1;
@@ -52,6 +68,7 @@ public class SceneFader : MonoBehaviour
             yield return null;
         }
     }
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;

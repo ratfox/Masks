@@ -207,6 +207,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &73513717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 73513719}
+  - component: {fileID: 73513718}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &73513718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73513717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f330610c9129f4046ac60da3d3f16187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGameOver: 0
+  gameOverPanel: {fileID: 395603981}
+--- !u!4 &73513719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73513717}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5220086, y: 0.55379564, z: 36.678055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &159093467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,9 +1134,7 @@ MonoBehaviour:
   detectionRadius: 10
   dangerRadius: 2
   enemyTag: Enemy
-  currentFear: 0
   proximity: 0
-  playerFaceSR: {fileID: 0}
 --- !u!114 &718037050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1658,8 +1702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6acd616b0e0c4c0f8e5c31ebaac7bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGameOver: 0
-  gameOverPanel: {fileID: 395603981}
+  currentFear: 0
 --- !u!1 &1151651025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,7 +2126,6 @@ GameObject:
   - component: {fileID: 1697067223}
   - component: {fileID: 1697067222}
   - component: {fileID: 1697067221}
-  - component: {fileID: 1697067224}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -2155,8 +2197,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1116257877}
-        m_TargetAssemblyTypeName: UIGauge, Assembly-CSharp
+      - m_Target: {fileID: 73513718}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -2205,18 +2247,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697067219}
   m_CullTransparentMesh: 1
---- !u!114 &1697067224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697067219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7acf50ab489604a51ba02f2400fedea3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1719715401
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,3 +2443,4 @@ SceneRoots:
   - {fileID: 706640440}
   - {fileID: 729102567}
   - {fileID: 159093471}
+  - {fileID: 73513719}
