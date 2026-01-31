@@ -8,7 +8,7 @@ public class SceneFader : MonoBehaviour
     public static SceneFader Instance;
     private Canvas faderCanvas;
     public Image fadeImage;
-    public float fadeSpeed = 0.5f; // ignored, set in inspector
+    public float fadeSpeed = 0.6f; // ignored, set in inspector
 
     void Awake()
     {
