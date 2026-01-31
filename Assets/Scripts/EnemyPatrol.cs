@@ -27,7 +27,6 @@ public class EnemyPatrol : MonoBehaviour
 
     void MoveToTarget()
     {
-                Debug.Log("Bla: " +  " " + currentTargetIndex + " out of " + waypoints.Count);
         Transform target = waypoints[currentTargetIndex];
 
         // Move towards the target
@@ -60,7 +59,6 @@ public class EnemyPatrol : MonoBehaviour
         {
             nextPoint = Random.Range(0, waypoints.Count);
         }
-        Debug.Log("Text: " + nextPoint + " " + currentTargetIndex);
 
         currentTargetIndex = nextPoint;
         isWaiting = false;
