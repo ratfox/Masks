@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IResettable
 {
     private void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
     private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
@@ -103,6 +103,11 @@ public class PlayerController : MonoBehaviour
         if (a == SceneTransition.TransitionSide.Top && b == SceneTransition.TransitionSide.Bottom) return true;
         if (a == SceneTransition.TransitionSide.Bottom && b == SceneTransition.TransitionSide.Top) return true;
         return false;
+    }
+
+    public void ResetObject()
+    {
+        transform.position = new Vector3(-5.5f, -15.6f, 0);
     }
 }
 
