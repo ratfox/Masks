@@ -34,7 +34,7 @@ public class ProximityDetector : MonoBehaviour, IResettable
         proximity = 1 - ((closestDistance - dangerRadius) / (detectionRadius - dangerRadius));
         proximity = Mathf.Clamp(proximity, -0.5f, 1.0f);
 
-        if (enemyFaceSR != null &&
+        if (enemyFaceSR != null && playerFaceSR.color.a == 1 &&
             playerFaceSR.sprite.name == enemyFaceSR.sprite.name)
         {
             proximity = -0.5f;
@@ -53,6 +53,7 @@ public class ProximityDetector : MonoBehaviour, IResettable
             GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
 
             SpriteRenderer enemyHandsSR = null;
+            SpriteRenderer enemyWishSR = null;
             foreach (GameObject enemy in enemies)
             {
                 float distance = Vector2.Distance(transform.position, enemy.transform.position);
@@ -60,6 +61,7 @@ public class ProximityDetector : MonoBehaviour, IResettable
                 {
                     closestDistance = distance;
                     enemyHandsSR = enemy.transform.Find("EnemyHands").GetComponent<SpriteRenderer>();
+                    enemyWishSR = enemy.transform.Find("EnemyBubble/EnemyWish").GetComponent<SpriteRenderer>();
                 }
             }
             if (closestDistance > exchangeRadius)
@@ -67,6 +69,12 @@ public class ProximityDetector : MonoBehaviour, IResettable
                 return;
             }
             SpriteRenderer playerHandsSR = transform.Find("PlayerHands").GetComponent<SpriteRenderer>();
+            if (enemyWishSR.color.a > 0.5 && 
+                enemyWishSR.sprite.name != playerHandsSR.sprite.name)
+            {
+                return;  // Enemy wants other object
+            }
+
             if (enemyHandsSR != null)
             {
                 Sprite playerObject = playerHandsSR.sprite;
