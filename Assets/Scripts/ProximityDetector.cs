@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 
-public class ProximityDetector : MonoBehaviour
+public class ProximityDetector : MonoBehaviour, IResettable
 {
     public float detectionRadius = 10f; // Maximum distance to start filling the gauge
     public float dangerRadius = 2f;    // Distance where gauge is 100% full
+    public float exchangeRadius = 1f;    // Distance where exchange is possible
     public string enemyTag = "Enemy";
     public float proximity = 0.0f;
 
@@ -45,6 +46,51 @@ public class ProximityDetector : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            float closestDistance = Mathf.Infinity;
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+
+            SpriteRenderer enemyHandsSR = null;
+            foreach (GameObject enemy in enemies)
+            {
+                float distance = Vector2.Distance(transform.position, enemy.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    enemyHandsSR = enemy.transform.Find("EnemyHands").GetComponent<SpriteRenderer>();
+                }
+            }
+            if (closestDistance > exchangeRadius)
+            {
+                return;
+            }
+            SpriteRenderer playerHandsSR = transform.Find("PlayerHands").GetComponent<SpriteRenderer>();
+            if (enemyHandsSR != null)
+            {
+                Sprite playerObject = playerHandsSR.sprite;
+                bool playerHasObject = playerHandsSR.color.a == 1;
+                if (enemyHandsSR.color.a == 1)  // Enemy has object
+                {
+                    playerHandsSR.sprite = enemyHandsSR.sprite;
+                    playerHandsSR.color = new Color(1, 1, 1, 1);                    
+                } else
+                {
+                    playerHandsSR.color = new Color(1, 1, 1, 0);                    
+                }
+                if (playerHasObject)
+                {
+                    enemyHandsSR.sprite = playerObject;
+                    enemyHandsSR.color = new Color(1, 1, 1, 1);
+                } else
+                {
+                    enemyHandsSR.color = new Color(1, 1, 1, 0);
+                }
+            }
+        }
+        
+    }
 
     // Visual aid in the Editor
     private void OnDrawGizmosSelected()
@@ -55,9 +101,10 @@ public class ProximityDetector : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, dangerRadius);
     }
 
-     void ResetObject()
+    public void ResetObject()
     {
         proximity = 0.0f;
+        transform.Find("PlayerHands").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
     }
 
 }
