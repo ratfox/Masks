@@ -529,6 +529,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 413318428167780288, guid: 472ba8f3986dd4291997e1b4e0f0bf73, type: 3}
+      propertyPath: objectOptions.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 413318428167780288, guid: 472ba8f3986dd4291997e1b4e0f0bf73, type: 3}
+      propertyPath: objectOptions.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 66176e0d79b0e4a209852b02d5d60286, type: 3}
+    - target: {fileID: 413318428167780288, guid: 472ba8f3986dd4291997e1b4e0f0bf73, type: 3}
+      propertyPath: objectOptions.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 66176e0d79b0e4a209852b02d5d60286, type: 3}
+    - target: {fileID: 413318428167780288, guid: 472ba8f3986dd4291997e1b4e0f0bf73, type: 3}
+      propertyPath: objectOptions.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 66176e0d79b0e4a209852b02d5d60286, type: 3}
+    - target: {fileID: 413318428167780288, guid: 472ba8f3986dd4291997e1b4e0f0bf73, type: 3}
+      propertyPath: objectOptions.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 66176e0d79b0e4a209852b02d5d60286, type: 3}
+    - target: {fileID: 413318428167780288, guid: 472ba8f3986dd4291997e1b4e0f0bf73, type: 3}
+      propertyPath: objectOptions.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: 66176e0d79b0e4a209852b02d5d60286, type: 3}
+    - target: {fileID: 413318428167780288, guid: 472ba8f3986dd4291997e1b4e0f0bf73, type: 3}
+      propertyPath: objectOptions.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: 66176e0d79b0e4a209852b02d5d60286, type: 3}
+    - target: {fileID: 413318428167780288, guid: 472ba8f3986dd4291997e1b4e0f0bf73, type: 3}
+      propertyPath: objectOptions.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: 66176e0d79b0e4a209852b02d5d60286, type: 3}
     - target: {fileID: 813233447009290593, guid: 472ba8f3986dd4291997e1b4e0f0bf73, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
