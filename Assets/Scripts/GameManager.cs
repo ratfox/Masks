@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     // This is the "static" reference that other scripts use to find this one
     public static GameManager Instance { get; private set; }
     public bool isGameOver = false;
+    public GameObject startPanel;
     public GameObject gameOverPanel;
     public List<Sprite> objectOptions; 
     public Sprite goalObject;
@@ -78,6 +79,10 @@ public class GameManager : MonoBehaviour
         StartCoroutine(RestartRoutine());
     }
 
+private void RemoveStartScreen()
+{
+    startPanel.SetActive(false);
+}
 private IEnumerator RestartRoutine()
 {
     SceneFader.Instance.FadeOut();
